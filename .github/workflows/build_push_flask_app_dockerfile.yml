@@ -31,7 +31,7 @@ jobs:
         uses: mr-smithers-excellent/docker-build-push@v5.5
         with:
           addLatest: true
-          dockerfile: ./webapp/Dockerfile
+          directory: ./webapp
           image: toonarmycaptain/eks-test
           registry: docker.io
           tags: ${{ steps.meta.outputs.tags }}
