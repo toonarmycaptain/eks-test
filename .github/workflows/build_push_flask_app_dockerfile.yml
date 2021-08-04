@@ -32,6 +32,7 @@ jobs:
         with:
           addLatest: true
           directory: ./webapp
+          dockerfile: ./webapp/Dockerfile
           image: toonarmycaptain/eks-test
           registry: docker.io
           tags: ${{ steps.meta.outputs.tags }}
