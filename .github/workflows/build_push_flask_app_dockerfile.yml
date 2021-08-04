@@ -30,8 +30,8 @@ jobs:
       - name: Docker Build & Push Action
         uses: mr-smithers-excellent/docker-build-push@v5.5
         with:
-          context: ./webapp
-          push: true
+          addLatest: true
+          dockerfile: ./webapp/Dockerfile
           image: toonarmycaptain/eks-test
           registry: docker.io
           tags: ${{ steps.meta.outputs.tags }}
