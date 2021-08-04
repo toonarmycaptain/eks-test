@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    {% block head %}
+      <title>
+        EKS Flask App Demo - {% block title %}{% endblock %}
+      </title>
+      <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"/>
+    {% endblock %}
+  </head>
+  <body>
+    <h1>Hellooooooo, world!</h1>
+
+      {% for message in get_flashed_messages() %}
+        <div class="flash">{{ message }}</div>
+      {% endfor %}
+  {% block body %}{% endblock %}
+  </body>
+</html>
