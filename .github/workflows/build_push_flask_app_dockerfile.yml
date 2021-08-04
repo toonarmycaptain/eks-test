@@ -27,12 +27,6 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Extract metadata (tags, labels) for Docker
-        id: meta
-        uses: docker/metadata-action@v3.4.1
-        with:
-          images: toonarmycaptain/eks-test
-
       - name: Docker Build & Push Action
         uses: mr-smithers-excellent/docker-build-push@v5.5
         with:
