@@ -5,9 +5,9 @@ metadata:
   labels:
     app: eks-test-flask
 spec:
-  {{ - if not .Values.autoscaling.enabled }}
+  {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicas }}
-  {{ - end }}
+  {{- end }}
   selector:
     matchLabels:
       app: eks-test-flask
