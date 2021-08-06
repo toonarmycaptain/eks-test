@@ -4,6 +4,7 @@ metadata:
   name: eks-test-flask
   labels:
     app: eks-test-flask
+  namespace: default
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicas }}
