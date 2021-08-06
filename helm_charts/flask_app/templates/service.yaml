@@ -12,4 +12,5 @@ spec:
       protocol: TCP
       name: http
   selector:
-    {{- include "flask_app.selectorLabels" . | nindent 4 }}
+    app: flask
+  type: LoadBalancer
