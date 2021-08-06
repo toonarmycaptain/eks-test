@@ -11,5 +11,5 @@ spec:
     - name: wget
       image: busybox
       command: ['wget']
-      args: ['{{ include "flask_app.fullname" . }}:{{ .Values.service.port }}']
+      args: ['{{ include "flask_app.fullname" . }}:{{ .Values.flask_app_image.port }}']
   restartPolicy: Never
