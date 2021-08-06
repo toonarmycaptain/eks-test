@@ -6,9 +6,9 @@ metadata:
     {{- include "flask_app.labels" . | nindent 4 }}
 spec:
   ports:
-    - port: {{ .Values.flask_app_image.port }}
-      targetPort: http
-      protocol: TCP
+    - protocol: TCP
+      port: 80
+      targetPort: {{ .Values.flask_app_image.port }}
       name: http
   selector:
     app: flask
