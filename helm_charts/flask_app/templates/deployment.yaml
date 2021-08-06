@@ -5,9 +5,9 @@ metadata:
   labels:
     app: eks-test-flask
 spec:
-  {{- if not .Values.autoscaling.enabled }}
-  replicas: {{ .Values.replicas }}
-  {{- end }}
+  { { - if not .Values.autoscaling.enabled } }
+  replicas: { { .Values.replicas } }
+  { { - end } }
   selector:
     matchLabels:
       app: eks-test-flask
@@ -22,18 +22,18 @@ spec:
         app: eks-test-flask
     spec:
       containers:
-      - image: "{{ .Values.flask_app_image.repository }}:{{ .Values.flask_app_image.version | default .Chart.AppVersion }}"
-        imagePullPolicy: { { .Values.flask_app_image.pullPolicy } }
-        name: eks-test-flask
-          ports:
-            - name: http
-              containerPort: {{ .Values.flask_app_image.port }}
-              protocol: TCP
-          livenessProbe:
-            httpGet:
-              path: /
-              port: http
-          readinessProbe:
-            httpGet:
-              path: /
-              port: http
+        - image: {{ .Values.flask_app_image.repository }}:{{ .Values.flask_app_image.version }}
+          imagePullPolicy: { { .Values.flask_app_image.pullPolicy } }
+          name: eks-test-flask
+            ports:
+                - name: http
+                  containerPort: { { .Values.flask_app_image.port } }
+                  protocol: TCP
+            livenessProbe:
+              httpGet:
+                path: /
+                port: http
+            readinessProbe:
+              httpGet:
+                path: /
+                port: http
