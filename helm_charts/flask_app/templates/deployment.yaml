@@ -35,7 +35,7 @@ spec:
           imagePullPolicy: {{ .Values.flask_app_image.pullPolicy }}
           ports:
             - name: http
-              containerPort: 80
+              containerPort: {{ .Values.flask_app_image.port }}
               protocol: TCP
           livenessProbe:
             httpGet:
