@@ -3,35 +3,28 @@ kind: Deployment
 metadata:
   name: {{ include "flask_app.fullname" . }}
   labels:
-    {{- include "flask_app.labels" . | nindent 4 }}
+    app: eks-test-flask
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicas }}
   {{- end }}
   selector:
     matchLabels:
-      {{- include "flask_app.selectorLabels" . | nindent 6 }}
+      app: eks-test-flask
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
   template:
     metadata:
-      {{- with .Values.podAnnotations }}
-      annotations:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
       labels:
-        {{- include "flask_app.selectorLabels" . | nindent 8 }}
+        app: eks-test-flask
     spec:
-      {{- with .Values.imagePullSecrets }}
-      imagePullSecrets:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
-      securityContext:
-        {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
-        - name: {{ .Chart.Name }}
-          securityContext:
-            {{- toYaml .Values.securityContext | nindent 12 }}
-          image: "{{ .Values.flask_app_image.repository }}:{{ .Values.flask_app_image.version | default .Chart.AppVersion }}"
-          imagePullPolicy: {{ .Values.flask_app_image.pullPolicy }}
+      - image: "{{ .Values.flask_app_image.repository }}:{{ .Values.flask_app_image.version | default .Chart.AppVersion }}"
+        imagePullPolicy: { { .Values.flask_app_image.pullPolicy } }
+        name: eks-test-flask
           ports:
             - name: http
               containerPort: {{ .Values.flask_app_image.port }}
@@ -44,17 +37,3 @@ spec:
             httpGet:
               path: /
               port: http
-          resources:
-            {{- toYaml .Values.resources | nindent 12 }}
-      {{- with .Values.nodeSelector }}
-      nodeSelector:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
-      {{- with .Values.affinity }}
-      affinity:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
-      {{- with .Values.tolerations }}
-      tolerations:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
