@@ -23,13 +23,13 @@ spec:
         app: eks-test-flask
     spec:
       containers:
-        - image: {{ .Values.flask_app_image.repository }}:{{ .Values.flask_app_image.version }}
-          imagePullPolicy: {{ .Values.flask_app_image.pullPolicy }}
-          name: eks-test-flask
-          ports:
-          - containerPort: {{ .Values.flask_app_image.port }}
-            protocol: TCP
-            name: http
+      - image: {{ .Values.flask_app_image.repository }}:{{ .Values.flask_app_image.version }}
+        imagePullPolicy: {{ .Values.flask_app_image.pullPolicy }}
+        name: eks-test-flask
+        ports:
+        - containerPort: {{ .Values.flask_app_image.port }}
+          protocol: TCP
+          name: http
           livenessProbe:
             httpGet:
               path: /
