@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "flask_app.fullname" . }}
+  name: eks-test-flask
   labels:
     app: eks-test-flask
 spec:
