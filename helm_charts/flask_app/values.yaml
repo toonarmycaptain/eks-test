@@ -3,7 +3,7 @@
 # Declare variables to be passed into your templates.
 
 replicas: 3
-version: latest
+version: "latest"
 
 flask_app_image:
   repository: hub.docker.com/repository/docker/toonarmycaptain/eks-test
