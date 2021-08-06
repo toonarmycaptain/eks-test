@@ -5,7 +5,6 @@ metadata:
   labels:
     {{- include "flask_app.labels" . | nindent 4 }}
 spec:
-  type: {{ .Values.service.type }}
   ports:
     - port: {{ .Values.flask_app_image.port }}
       targetPort: http
