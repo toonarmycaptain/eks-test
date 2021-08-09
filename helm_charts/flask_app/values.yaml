@@ -6,7 +6,8 @@ replicas: 3
 version: "latest"
 
 flask_app_image:
-  repository: hub.docker.com/repository/docker/toonarmycaptain/eks-test
+  repository: toonarmycaptain/eks-test
+  version: latest
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: "latest"
