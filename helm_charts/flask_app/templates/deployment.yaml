@@ -28,3 +28,11 @@ spec:
         - containerPort: {{ .Values.flask_app_image.port }}
           protocol: TCP
           name: http
+        livenessProbe:
+          httpGet:
+            path: /
+            port: http
+        readinessProbe:
+          httpGet:
+            path: /
+            port: http
