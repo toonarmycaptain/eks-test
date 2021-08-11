@@ -1,15 +1,15 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: eks-test-flask
+  name: k8s-test-flask
   labels:
-    app: eks-test-flask
+    app: k8s-test-flask
   namespace: default
 spec:
   replicas: {{ .Values.replicas }}
   selector:
     matchLabels:
-      app: eks-test-flask
+      app: k8s-test-flask
   strategy:
     rollingUpdate:
       maxSurge: 25%
@@ -18,12 +18,12 @@ spec:
   template:
     metadata:
       labels:
-        app: eks-test-flask
+        app: k8s-test-flask
     spec:
       containers:
       - image: "{{ .Values.flask_app_image.repository }}:{{ .Values.flask_app_image.version }}"
         imagePullPolicy: {{ .Values.flask_app_image.pullPolicy }}
-        name: eks-test-flask
+        name: k8s-test-flask
         ports:
         - containerPort: {{ .Values.flask_app_image.port }}
           protocol: TCP

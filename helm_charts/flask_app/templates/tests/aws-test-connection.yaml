@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: eks-test-flask-test-connection"
+  name: k8s-test-flask-test-connection"
   annotations:
     "helm.sh/hook": test
 spec:
@@ -9,5 +9,5 @@ spec:
     - name: wget
       image: busybox
       command: ['wget']
-      args: ['eks-test-flask:{{ .Values.flask_app_image.port }}']
+      args: ['k8s-test-flask:{{ .Values.flask_app_image.port }}']
   restartPolicy: Never
