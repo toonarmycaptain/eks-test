@@ -12,7 +12,7 @@ flask_app_image:
   # Overrides the image tag whose default is the chart appVersion.
   tag: "latest"
   port: 3000
-
+  initialDelaySeconds: 30
 autoscaling:
   enabled: true
   minReplicas: 1
