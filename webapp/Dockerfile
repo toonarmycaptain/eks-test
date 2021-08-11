@@ -10,6 +10,6 @@ RUN pip3 install -r requirements.txt
 # Copy folder into container
 COPY . .
 
-EXPOSE 80
+EXPOSE 3000
 
-CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0 --port=80"]
+CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0 --port=3000"]
