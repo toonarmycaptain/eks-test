@@ -29,8 +29,14 @@ mkdir ~/.config  # needed due too doctl not having permissions
 doctl auth init # need access token
 
 mkdir ~/.kube  # similarly need permissions
-# doctl kubernetes cluster kubeconfig save f054a666-f59d-4907-8ec6-316cf0f0b6eb
 
+
+doctl kubernetes cluster kubeconfig save <DO cluster ID from dashboard>
 
 git clone https://github.com/toonarmycaptain/kubernetes-test.git
-kubectl create namespace flask
+cd kubernetes-test
+
+helm install flask-app helm_charts/flask_app/
+
+kubectl get-services -w  # watch until external-ip has a value, and go observe running app
+
