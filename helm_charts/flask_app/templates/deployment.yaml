@@ -38,3 +38,7 @@ spec:
             path: /
             port: http
           initialDelaySeconds: {{ .Values.flask_app_image.initialDelaySeconds }}
+      volumes:
+        - name: k8s-test-storage-volume
+          persistentVolumeClaim:
+            claimName: k8s-test-storage-volume
