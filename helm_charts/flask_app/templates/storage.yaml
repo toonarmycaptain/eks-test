@@ -8,11 +8,13 @@ spec:
     storage: 10Gi
   accessModes:
     - ReadWriteMany
+  hostPath:
+    path: "/mnt/data"
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: k8s-test-storage-volume
+  name: k8s-test-storage-claim
 spec:
   storageClassName: manual
   accessModes:
@@ -20,5 +22,4 @@ spec:
   resources:
     requests:
       storage: 10Gi
-
 
