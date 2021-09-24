@@ -14,7 +14,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: k8s-test-storage-claim
+  name: k8s-test-storage-volume
 spec:
   storageClassName: manual
   accessModes:
