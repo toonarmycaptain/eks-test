@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block header %}
+{% block title %}Retrieved data{% endblock %}
+{% endblock %}
+
+{% block body %}
+    <h1 style="text-align: center;">Retrieved data</h1>
+
+    <p style="text-align: center">
+        {% for text in data %}
+            {{ text }}<br>
+        {% endfor %}
+    </p>
+
+
+    <br><br>
+    <p style="text-align: center">
+        <a href="{{ url_for('home') }}">Back to Home</a>
+    </p>
+
+{% endblock %}

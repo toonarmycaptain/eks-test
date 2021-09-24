@@ -7,4 +7,16 @@
 {% block body %}
     <h1 style="text-align: center;">Hellooooooo, world!</h1>
 
+    <p style="text-align: center">Enter data here: </p>
+
+    <form method="post" style="text-align: center">
+        <label for="new_data">Data:</label><br>
+        <input type="text" id="new_data" name="new_data"><br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <p style="text-align: center">
+        <a href="{{ url_for('stored_data') }}">See stored data here</a>
+    </p>
+
 {% endblock %}
