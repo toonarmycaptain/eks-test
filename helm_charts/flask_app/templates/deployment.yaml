@@ -38,6 +38,9 @@ spec:
             path: /
             port: http
           initialDelaySeconds: {{ .Values.flask_app_image.initialDelaySeconds }}
+        volumeMounts:
+          - name: k8s-test-storage-volume
+            mountPath: "/mnt/data"
       volumes:
         - name: k8s-test-storage-volume
           persistentVolumeClaim:
