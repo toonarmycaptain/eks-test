@@ -3,12 +3,12 @@ kind: PersistentVolume
 metadata:
   name: k8s-test-storage-volume
 spec:
-  storageClassName: manual
   capacity:
     storage: 10Gi
   accessModes:
     - ReadWriteMany
-  hostPath:
+  nfs:
+    server: nfs-service.default.svc.cluster.local # "should work", but doesn't?
     path: "/mnt/data"
 ---
 apiVersion: v1
@@ -16,7 +16,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: k8s-test-storage-volume
 spec:
-  storageClassName: manual
+  storageClassName: ""
   accessModes:
     - ReadWriteMany
   resources:
