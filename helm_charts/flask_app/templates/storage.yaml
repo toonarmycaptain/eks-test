@@ -8,7 +8,7 @@ spec:
   accessModes:
     - ReadWriteMany
   nfs:
-    server: nfs-service.default.svc.cluster.local # "should work", but doesn't?
+    server: nfs-server.default.svc.cluster.local # "should work", but doesn't?
     path: "/mnt/data"
 ---
 apiVersion: v1
