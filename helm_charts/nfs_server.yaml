@@ -25,7 +25,7 @@ spec:
           securityContext:
             privileged: true
           volumeMounts:
-            - mountPath: /flask-app-data
+            - mountPath: /mnt/data
               name: k8s-test-storage-volume
       volumes:
         - name: k8s-test-storage-volume
