@@ -20,6 +20,9 @@ spec:
       labels:
         app: k8s-test-flask
     spec:
+      securityContext:
+        fsGroup: 1000
+        runAsUser: 1000
       containers:
       - image: "{{ .Values.flask_app_image.repository }}:{{ .Values.flask_app_image.version }}"
         imagePullPolicy: {{ .Values.flask_app_image.pullPolicy }}
@@ -44,4 +47,5 @@ spec:
       volumes:
         - name: k8s-test-storage-volume
           persistentVolumeClaim:
-            claimName: k8s-test-storage-volume
+            claimName:
+              k8s-test-storage-claim

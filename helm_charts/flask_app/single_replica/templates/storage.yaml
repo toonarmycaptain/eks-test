@@ -1,0 +1,30 @@
+# Broadly uses this template: https://devopscube.com/persistent-volume-google-kubernetes-engine/
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: k8s-test-storage-volume
+spec:
+  storageClassName: "apps"
+  capacity:
+    storage: 50
+  accessModes:
+    - ReadWriteOnce
+  claimRef:
+    namespace: default
+    name: k8s-test-storage-claim
+  gcePersistentDisk:
+    pdName: gke-pv
+    fsType: ext4
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: k8s-test-storage-claim
+spec:
+  storageClassName: "apps"
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 50
