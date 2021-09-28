@@ -1,0 +1,1 @@
+Deploy nfs_server.yaml, nfs_service.yaml, storage.yaml before deploying scalable_chart. 
