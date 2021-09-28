@@ -25,10 +25,10 @@ spec:
           securityContext:
             privileged: true
           volumeMounts:
-            - mountPath: /mnt/data
-              name: k8s-test-storage-volume
+            - mountPath: /data
+              name: nfs-pvc
       volumes:
-        - name: k8s-test-storage-volume
+        - name: nfs-pvc
           gcePersistentDisk:
             pdName: gce-nfs-disk
             fsType: ext4
