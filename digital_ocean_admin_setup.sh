@@ -38,5 +38,5 @@ cd kubernetes-test
 
 helm install flask-app helm_charts/flask_app/
 
-kubectl get-services -w  # watch until external-ip has a value, and go observe running app
+kubectl get services -w  # watch until external-ip has a value, and go observe running app
 
